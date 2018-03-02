@@ -14,14 +14,12 @@ typedef struct RBtree
     struct RBtree *lchild, *rchild;
     struct RBtree *p;
 } rbtree;
-void leftRotete(rbtree *x,rbtree **root);
-void rightRotete(rbtree *x,rbtree **root);
 void rbInsert(rbtree *tree,rbtree *node,rbtree **root); //insert
-void rbInsertFixup(rbtree *node,rbtree **root);
 void rbDelete(rbtree **root,rbtree *node,rbtree *nill); //delete
-rbtree *search(int key,rbtree *root);
+rbtree *search(int key,rbtree *root);                   //search
 rbtree *init(void);
 rbtree *newnode(int key);
+
 int main ()
 {
     rbtree *nill = init(),*root = nill;
@@ -55,6 +53,47 @@ rbtree *search(int key,rbtree *root)
         return search(key,root->rchild);
     }
 }
+void leftRotete(rbtree *x,rbtree **root)
+{
+    rbtree *y = x->rchild;
+    x->rchild = y->lchild;
+    if(y->lchild->nill == FALSE){
+        y->lchild->p = x;
+    }
+    y->p = x->p;
+    if(x->p->nill == TRUE){
+        *root = y;
+    }
+    else if (x == x->p->lchild){
+        x->p->lchild = y;
+    }
+    else {
+        x->p->rchild = y;
+    }
+    y->lchild = x;
+    x->p = y;
+}
+void rightRotete(rbtree *x,rbtree **root)
+{
+    rbtree *y = x->lchild;
+    x->lchild = y->rchild;
+    if(y->rchild->p == FALSE){
+        y->rchild->p = x;
+    }
+    y->p = x->p;
+    if(x->p->nill == TRUE){
+        *root = y;
+    }
+    else if(x->p->lchild == x){
+        x->p->lchild = y;
+    }
+    else{
+        x->p->rchild = y;
+    }
+    y->rchild = x;
+    x->p = y;
+}
+
 rbtree *treeSuccessor(rbtree *node)
 {
     rbtree *prev;
@@ -276,44 +315,4 @@ void rbInsert(rbtree *nill,rbtree *node,rbtree **root)
     node->rchild = nill;    //nill
     node->color = RED;
     rbInsertFixup(node,root);
-}
-void leftRotete(rbtree *x,rbtree **root)
-{
-    rbtree *y = x->rchild;
-    x->rchild = y->lchild;
-    if(y->lchild->nill == FALSE){
-        y->lchild->p = x;
-    }
-    y->p = x->p;
-    if(x->p->nill == TRUE){
-        *root = y;
-    }
-    else if (x == x->p->lchild){
-        x->p->lchild = y;
-    }
-    else {
-        x->p->rchild = y;
-    }
-    y->lchild = x;
-    x->p = y;
-}
-void rightRotete(rbtree *x,rbtree **root)
-{
-    rbtree *y = x->lchild;
-    x->lchild = y->rchild;
-    if(y->rchild->p == FALSE){
-        y->rchild->p = x;
-    }
-    y->p = x->p;
-    if(x->p->nill == TRUE){
-        *root = y;
-    }
-    else if(x->p->lchild == x){
-        x->p->lchild = y;
-    }
-    else{
-        x->p->rchild = y;
-    }
-    y->rchild = x;
-    x->p = y;
 }
