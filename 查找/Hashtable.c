@@ -14,19 +14,19 @@ struct search
     int flag;
     int key;
     int data;
-} list[16385];
+} list[131073];
 int gethash(int key)
 {
-    return 16384*(key*A - (int)key*A);
+    return (int)(131072*(key*A - (int)(key*A)));
 }
 void init(void)
 {
-    for (int i = 0; i < 16384; i++)
+    for (int i = 0; i < 131072; i++)
     {
         list[i].flag = UNDEF;
         list[i].data = UNDEF;
     }
-    list[16384].flag = END;
+    list[131072].flag = END;
 }
 int push(int key, int data)
 {

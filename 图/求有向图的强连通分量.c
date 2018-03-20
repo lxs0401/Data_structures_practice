@@ -80,7 +80,7 @@ int pDFS (MGraph *G , int i , char *visit , int *time)
 	printf ("%d,",i);
 	for (int num = 0 ; num < G -> vexnum ; num ++ )
 	{
-		if (G -> arcs[i][num] . adj < INFINTIY && visit [num] == FALSE)
+		if (G -> arcs[i][num].adj < INFINTIY && visit [num] == FALSE)
 		{
 			pDFS (G , num , visit , time);
 		}
