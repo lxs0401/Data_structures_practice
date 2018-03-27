@@ -1,3 +1,6 @@
+#include <stdio.h>
+#include <stdlib.h>
+#define NEW(x,y) ((x *)malloc(sizeof(x)*y))
 void mp_paixu(int *character,int strle_n)  //冒泡排序
 {
 	int temp;
@@ -73,4 +76,45 @@ void xz_paixu(int *character,int strle_n)
 		character[max] = character[i];
 		character[i] = k;
 	}
+}
+void hebing(int *nums,int len) //递归的合并排序
+{
+    int *temp = NEW(int,len);
+    int this = 0;
+    int lLen = len/2, rLen = len;
+    int i = 0,j = len/2;
+    if(len <= 1)return ;
+    hebing(nums,lLen);
+    hebing(nums + len/2,len - lLen);
+    while(i < lLen && j < rLen)
+    {
+        if(nums[i] < nums[j])
+        {
+            temp[this] = nums[i];
+            i += 1;
+            this += 1;
+        }
+        else
+        {
+            temp[this] = nums[j];
+            j += 1;
+            this += 1;
+        }
+    }
+    while(i < lLen)
+    {
+        temp[this] = nums[i];
+        this += 1;
+        i += 1;
+    }
+    while(j < rLen)
+    {
+        temp[this] = nums[j];
+        this += 1;
+        j += 1;
+    }
+    for(int i = 0 ; i < len ; i ++)
+    {
+        nums[i] = temp[i];
+    }
 }
