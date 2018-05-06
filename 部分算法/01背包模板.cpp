@@ -6,8 +6,7 @@ unsigned int weight[10];
 unsigned int value[10];  
 #define  max(x,y)   (x)>(y)?(x):(y)  
 int main()  
-{  
-      
+{     
     int N,M;  
     cin>>N;//物品个数  
     cin>>M;//背包容量  

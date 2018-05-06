@@ -1,15 +1,14 @@
 #include <stdio.h>
 #include <stdlib.h>
-void up(int *heap, int index)
+
+void up(int *heap,int index)
 {
-    int temp;
-    while (index > 0 && heap[index] > heap[(index - 1) / 2])
-    {
-        temp = heap[index];
-        heap[index] = heap[(index - 1) / 2];
-        heap[(index - 1) / 2] = temp;
-        index = (index - 1) / 2;
+    int temp = heap[index];
+    while(index > 0 && temp > heap[ (index - 1)/2 ]){
+        heap[index] = heap[(index - 1)/2];
+        index = (index - 1)/2;
     }
+    heap[index] = temp;
 }
 void down (int *heap,int index,int len)
 {

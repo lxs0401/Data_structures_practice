@@ -16,12 +16,9 @@ int main()
         cin>>weight[i]>>value[i];  
     }  
     for (int i=1; i<=N; i++)  
-        for (int j=M; j>=1; j--)  
+        for (int j=M; j>=weight[i]; j--)  
         {  
-            if (weight[i]<=j)  
-            {  
-                f[j]=max(f[j],f[j-weight[i]]+value[i]);  
-            }             
+            f[j]=max(f[j],f[j-weight[i]]+value[i]);  
         }  
       
     cout<<f[M]<<endl;//输出最优解  
