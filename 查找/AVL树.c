@@ -136,14 +136,12 @@ int InsertAVL (Tree **tree,int data,int *taller)
     }
     else 
     {
-        if ((*tree) -> data == data)
-        {
+        if ((*tree) -> data == data){
             return FALSE;
         }
         else if ((*tree) -> data < data)
         {
-            if(InsertAVL(&((*tree) -> rchild),data,taller) == FALSE)
-            {
+            if(InsertAVL(&((*tree) -> rchild),data,taller) == FALSE){
                 return FALSE;
             }
             if (*taller == TRUE)
@@ -158,8 +156,7 @@ int InsertAVL (Tree **tree,int data,int *taller)
         }
         else if ((*tree) -> data > data)
         {
-            if(InsertAVL(&((*tree) -> lchild),data,taller) == FALSE)
-            {
+            if(InsertAVL(&((*tree) -> lchild),data,taller) == FALSE){
                 return FALSE;
             }
             if (*taller == TRUE)

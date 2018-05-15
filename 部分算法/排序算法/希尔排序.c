@@ -1,12 +1,12 @@
 #include <stdio.h>
-void ShellSort(int a[],int dk,int length){/*Ï£¶ûÅÅÐòº¯Êý*/
+void ShellSort(int a[],int dk,int length){/*Ï£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½*/
     int i,j,k;
-    for(i=dk+1;i<=length;i++){
-        if(a[i]<a[i-dk]){/*½«a[i]²åÈëÓÐÐòÔöÁ¿×Ó±í*/
-            k=a[i];
-        for(j=i-dk;j>0&&k<a[j];j=j-dk)
-            a[j+dk]=a[j];
-        a[j+dk]=k;//²åÈë£»
+    for(i = dk + 1;i <= length;i ++){
+        if(a[i] < a[i - dk]){/*ï¿½ï¿½a[i]ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó±ï¿½*/
+            k = a[i];
+        for(j= i - dk ;j > 0 && k < a[j] ;j = j - dk)
+            a[j + dk] = a[j];
+        a[j + dk]=k;//ï¿½ï¿½ï¿½ë£»
         }
     }
 }
