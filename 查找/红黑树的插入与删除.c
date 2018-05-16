@@ -94,24 +94,14 @@ void rightRotete(rbtree *x,rbtree **root)
 	x->p = y;
 }
 
-rbtree *treeSuccessor(rbtree *node)
+rbtree *treeSuccessor(rbtree *node) //
 {
 	rbtree *prev;
-	if(node->rchild->nill == FALSE)
-	{
-		rbtree *mininum = node -> rchild;
-		while (mininum->lchild->nill == FALSE){
-			mininum = mininum->lchild;
-		}
-		return mininum;
+	rbtree *mininum = node -> rchild;
+	while (mininum->lchild->nill == FALSE){
+		mininum = mininum->lchild;
 	}
-	prev = node->p;
-	while(prev->nill == FALSE && node == prev->rchild)
-	{
-		node = prev;
-		prev = prev->p;
-	}
-	return prev;
+	return mininum;
 }
 void rbDeleteFixup(rbtree **root,rbtree *x)
 {
@@ -179,7 +169,7 @@ void rbDeleteFixup(rbtree **root,rbtree *x)
 			}
 		}
 	}
-	x->color = BLACK;
+	x->color = BLACK; //
 }
 void rbDelete(rbtree **root,rbtree *node,rbtree *nill)
 {
