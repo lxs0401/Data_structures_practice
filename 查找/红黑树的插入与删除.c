@@ -125,6 +125,7 @@ void rbDeleteFixup(rbtree **root,rbtree *x)
 			}
 			else if (w->color == BLACK && w->lchild->color == RED && w->rchild->color == BLACK)
 			{
+				x->p->color = BLACK;
 				w->color = RED;
 				rightRotete(w,root);
 				w = x->p->rchild;
@@ -134,7 +135,7 @@ void rbDeleteFixup(rbtree **root,rbtree *x)
 				w->color = x->p->color;
 				x->p->color = BLACK;
 				w->rchild->color = BLACK;
-				leftRotete(x,root);
+				leftRotete(x->p,root);
 				x = *root;
 			}
 		}
@@ -155,6 +156,7 @@ void rbDeleteFixup(rbtree **root,rbtree *x)
 			}
 			else if (w->color == BLACK && w->rchild->color == RED && w->lchild->color == BLACK)
 			{
+				x->p->color = BLACK;
 				w->color = RED;
 				leftRotete(w,root);
 				w = x->p->lchild;
@@ -164,7 +166,7 @@ void rbDeleteFixup(rbtree **root,rbtree *x)
 				w->color = x->p->color;
 				x->p->color = BLACK;
 				w->lchild->color = BLACK;
-				rightRotete(x,root);
+				rightRotete(x->p,root);
 				x = *root;
 			}
 		}
