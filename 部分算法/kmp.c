@@ -23,20 +23,7 @@ int *enableKMP (char *arr , int len)
 	}
 	return data;
 }
-int kmp (char *a,char *b)
-{
-	int i,j;
-	int len2 = strlen(b),len = strlen(a);
-	int *kmp_list = enableKMP(b,len);
-	for (i = 0 , j = 0; i < len && j < len2 ; i ++)
-	{
-		if (i < len && j < len2 && a[i] == b[j]) j += 1;
-		else j = kmp_list[j] == -1 ? 0 : kmp_list[j];
-	}
-	free(kmp_list);
-	if (j == len2) return i-j+1;
-	else return -1;
-}
+
 int main ()
 {
 	while(scanf("%s%s",arr,arrb) != EOF)
