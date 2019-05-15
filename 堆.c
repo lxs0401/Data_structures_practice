@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+int len;
+int index;
 void up(int *heap,int index)
 {
     int temp = heap[index];
@@ -28,17 +30,18 @@ void down (int *heap,int index,int len)
         }
     }
 }
-void push(int *heap,int data,int len)
+void push(int *heap,int data)
 {
     heap[len] = data;
     len += 1;
     up(heap,len - 1);
 }
-int pop(int *heap,int len)
+int pop(int *heap)
 {
     int data = heap[0];
     heap[0] = heap[len - 1];
     down(heap,0,len - 1);
+    len -= 1;
     return data;
 }
 int main ()
